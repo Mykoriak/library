@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Button } from 'react-bootstrap';
 import { PropTypes } from 'prop-types';
 import {
   fetchBook, fetchBooks, updateBook, deleteBook
-} from '../actions/booksActions';
-import { getBook } from '../reducers/rootReducer';
-import { getUser } from '../reducers/userReducer';
+} from '../../actions/booksActions';
+import { getBook } from '../../reducers/rootReducer';
+import { getUser } from '../../reducers/userReducer';
+import BookDetailsView from './BookDetailsView';
 
 class BookDetails extends React.Component {
   constructor() {
@@ -43,19 +43,13 @@ class BookDetails extends React.Component {
 
   render() {
     if (!this.props.book) return null;
-    const { name, takedBy } = this.props.book;
     return (
-      <div>
-        <p>Название: {name}</p>
-        <p>{takedBy && `${takedBy} читает эту книгу`}</p>
-        {
-          (takedBy && (takedBy === this.props.user))
-            ? <Button variant="danger" onClick={this.handeOnClick}>Вернуть в библиотеку</Button>
-            : (!takedBy && this.props.user) && <Button variant="primary" onClick={this.handeOnClick}>Читать</Button>
-        }
-        <br />
-        <Button variant="danger" onClick={this.handleDelete}>Удалить книгу</Button>
-      </div>
+      <BookDetailsView
+        handleDelete={this.handleDelete}
+        handeOnClick={this.handeOnClick}
+        book={this.props.book}
+        user={this.props.user}
+      />
     );
   }
 }

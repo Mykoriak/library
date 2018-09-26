@@ -5,25 +5,32 @@ import PropTypes from 'prop-types';
 class LoginForm extends React.PureComponent {
   constructor() {
     super();
-    this.inputRef = React.createRef();
-    this.handleOnClick = this.handleOnClick.bind(this);
+
+    this.state = {
+      login: ''
+    };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleOnClick() {
-    if (this.inputRef.current.value) {
-      this.props.userLogin(this.inputRef.current.value);
-      this.inputRef.current.value = '';
-    }
+  handleChange(event) {
+    this.setState({ login: event.target.value });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.userLogin(this.state.login);
   }
 
   render() {
     return (
-      <Form>
+      <Form onSubmit={this.handleSubmit}>
         <Form.Group controlId="formGroupEmail">
           <Form.Label>Login:</Form.Label>
-          <Form.Control ref={this.inputRef} type="text" placeholder="Enter Login" />
+          <Form.Control type="text" placeholder="Enter Login" value={this.state.login} onChange={this.handleChange} />
         </Form.Group>
-        <Button onClick={this.handleOnClick} color="success">Submit</Button>
+        <Button variant="primary" type="submit">Submit</Button>
       </Form>
     );
   }

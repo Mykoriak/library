@@ -13,7 +13,7 @@ import { login } from './actions/userActions';
 import { getBooks } from './reducers/rootReducer';
 import { getUser } from './reducers/userReducer';
 import LoginForm from './components/LoginForm';
-import BookDetails from './components/BookDetails';
+import BookDetails from './components/BookDetails/BookDetails';
 
 class App extends Component {
   constructor() {

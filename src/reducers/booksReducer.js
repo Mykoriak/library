@@ -1,7 +1,6 @@
 export default (state = {
   books: [],
-  book: {},
-  deleted: false
+  book: {}
 }, action) => {
   switch (action.type) {
     case 'FETCH_BOOKS': {
