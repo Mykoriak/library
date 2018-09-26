@@ -4,7 +4,7 @@ import { PropTypes } from 'prop-types';
 
 class BookDetailsView extends React.Component {
   handleUpdate() {
-    this.props.handeOnClick();
+    this.props.handleOnClick();
   }
 
   handleOnDelete() {
@@ -34,6 +34,6 @@ export default BookDetailsView;
 BookDetailsView.propTypes = {
   book: PropTypes.object.isRequired,
   user: PropTypes.string.isRequired,
-  handeOnClick: PropTypes.func.isRequired,
+  handleOnClick: PropTypes.func.isRequired,
   handleDelete: PropTypes.func.isRequired
 };

@@ -11,7 +11,7 @@ import BookDetailsView from './BookDetailsView';
 class BookDetails extends React.Component {
   constructor() {
     super();
-    this.handeOnClick = this.handeOnClick.bind(this);
+    this.handleOnClick = this.handleOnClick.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
   }
 
@@ -19,7 +19,7 @@ class BookDetails extends React.Component {
     this.props.fetchBook(this.props.match.params.id);
   }
 
-  handeOnClick() {
+  handleOnClick() {
     const { id, taked, takedBy } = this.props.book;
     if (this.props.user && (!takedBy || takedBy === this.props.user)) {
       if (id && taked) {
@@ -46,7 +46,7 @@ class BookDetails extends React.Component {
     return (
       <BookDetailsView
         handleDelete={this.handleDelete}
-        handeOnClick={this.handeOnClick}
+        handleOnClick={this.handleOnClick}
         book={this.props.book}
         user={this.props.user}
       />
